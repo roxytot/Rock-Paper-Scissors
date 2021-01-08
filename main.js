@@ -329,6 +329,10 @@ let answerPlayer1 = document.createElement("input"); // create input textbox
 document.body.appendChild(answerPlayer1);
 
 
+let scoreBoard = document.createElement("h4"); // create new h4 element 
+scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
+document.body.appendChild(scoreBoard); //h4 visible in DOM
+
 function keepScoreGame(event) {
     let answerRandComp = randomMoveComp();
     console.log(`answer ${answerRandComp}`);
@@ -342,11 +346,10 @@ function keepScoreGame(event) {
         countLosses++;
     }
     console.log(result);
+    scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
 }
 
-let scoreBoard = document.createElement("h4");
-scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
-document.body.appendChild(scoreBoard);
+
 
 document.addEventListener("change", keepScoreGame); // calling function to create random number
 
