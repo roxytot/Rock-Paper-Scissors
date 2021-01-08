@@ -1,8 +1,10 @@
 console.log("this is a test");
 
-let playerMove = "rock";
-let computerMove = "paper";
+let playerMove = "paper";
+let computerMove = "scissors";
 
+
+// TASK
 if (playerMove === "rock") {
     if (computerMove === "rock") {
         console.log('draw');
@@ -19,12 +21,12 @@ if (playerMove === "rock") {
     } else {
         console.log("lose");
     }
-} else if (playerMove === "scisors") {
+} else if (playerMove === "scissors") {
     if (computerMove === "rock") {
-        console.log('win');
+        console.log('lose');
     } else if (computerMove === "paper") {
-        console.log("draw");
+        console.log("win");
     } else {
-        console.log("lose");
+        console.log("draw");
     }
 }
