@@ -314,19 +314,26 @@ let buttonNo = document.createElement("button")
 buttonNo.innerText = "No";
 document.body.appendChild(buttonNo);
 
-//let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
-//console.log(confirmChoice);
-
 // This allow player to keep playing if answer is ok
 
-/*
 let countGames = 0;
 let countWins = 0;
 let countLosses = 0;
 let countDraws = 0;
+
+let question2 = document.createElement("h3");
+question2.innerText = "Enter your move below:";
+document.body.appendChild(question2); 
+
+let textBox = document.createElement("input");
+document.body.appendChild(textBox); 
+
+document.addEventListener("input", randomMoveComp);
+
 //let answerRanComp;
 // console logs for testing
 
+/*
 while (confirmChoice) {
     let answerPlayer1 = prompt("Enter your move");
     let answerRandComp = randomMoveComp();
