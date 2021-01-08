@@ -232,29 +232,36 @@ function randomMoveComp() {
 }
 
 let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
-
+console.log(confirmChoice);
 // This allow player to keep playing if answer is ok
 
-countGames = 0
-countWins = 0
-countLosses = 0
-countDraws = 0
+let countGames = 0;
+let countWins = 0;
+let countLosses = 0;
+let countDraws = 0;
+//let answerRanComp;
+// console logs for testing
 
 while (confirmChoice) {
     let answerPlayer1 = prompt("Enter your move");
     let answerRandComp = randomMoveComp();
+    console.log(`Comp answer is ${answerRandComp}`);
     let result = getWinner(answerPlayer1, answerRandComp);
-    countGames++
+    console.log(result);
+    countGames++;
+    console.log(countGames);
     if (result === 0) {
-        countDraws++
+        countDraws++;
     } else if (result === 1) {
-        countWins++
+        countWins++;
     } else if (result === -1) {
-        countLosses++
+        countLosses++;
     }
+    console.log(`draws ${countDraws}, wins ${countWins}, losses ${countLosses}`);
     alert(`The result is ${result} - You played ${countGames} time(s) - W:${countWins}|D:${countDraws}|L:${countLosses}`);
-    let confirmChoice = confirm("Do you want to keep playing play?");
-}
+    confirmChoice = confirm("Do you want to keep playing play?");
+    console.log(confirmChoice);
+} 
 
 
 
