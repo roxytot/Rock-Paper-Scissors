@@ -67,6 +67,39 @@
 // TASK 3
 //results: 0 is draw, 1 is win, -1 is lose
 // player 1 is playerMove, player2 is computerMove
+// function getWinner(player1, player2) {
+//     if (player1 === "rock") {
+//         if (player2 === "rock") {
+//             return 0;
+//         } else if (player2 === "paper") {
+//             return -1;
+//         } else {
+//             return 1;
+//         }
+//     } else if (player1 === "paper") {
+//         if (player2 === "rock") {
+//             return 1;
+//         } else if (player2 === "paper") {
+//             return 0;
+//         } else {
+//             return -1;
+//         }
+//     } else if (player1 === "scissors") {
+//         if (player2 === "rock") {
+//             return -1;
+//         } else if (player2 === "paper") {
+//             return 1;
+//         } else {
+//             return 0;
+//         }
+//     }
+// }
+
+// let answer = prompt("Enter your move");
+// let result = getWinner(answer, "rock");
+// alert(`The result is ${result}`);
+
+// TASK 4
 function getWinner(player1, player2) {
     if (player1 === "rock") {
         if (player2 === "rock") {
@@ -95,6 +128,15 @@ function getWinner(player1, player2) {
     }
 }
 
-let answer = prompt("Enter your move");
-let result = getWinner(answer, "rock");
+let moveComputer = ["scissors", "paper", "rock"]
+
+function randomMoveComp() {
+    Math.random
+
+}
+
+
+let answerPlayer1 = prompt("Enter your move");
+let answerRandComp = FUNCTION
+let result = getWinner(answerPlayer1, "rock");
 alert(`The result is ${result}`);
