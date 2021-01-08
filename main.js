@@ -323,19 +323,21 @@ let countDraws = 0;
 
 let question2 = document.createElement("h3");
 question2.innerText = "Enter your move below:";
-document.body.appendChild(question2); 
+document.body.appendChild(question2);
 
-let textBox = document.createElement("input");
-document.body.appendChild(textBox); 
+let textBox = document.createElement("input"); // create input textbox
+document.body.appendChild(textBox);
 
-document.addEventListener("input", randomMoveComp);
+document.addEventListener("input", randomMoveComp); // calling function to create random number
 
-//let answerRanComp;
-// console logs for testing
+let scoreBoard = document.createElement("h4");
+scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
+document.body.appendChild(scoreBoard);
+
 
 /*
 while (confirmChoice) {
-    let answerPlayer1 = prompt("Enter your move");
+
     let answerRandComp = randomMoveComp();
     console.log(`Comp answer is ${answerRandComp}`);
     let result = getWinner(answerPlayer1, answerRandComp);
