@@ -302,9 +302,17 @@ function randomMoveComp() {
     return moveComputer[randNumber]; // return random answer
 }
 
-let question = document.createElement("h1");
+let question = document.createElement("h3");
 question.innerText = "Do you want to play Rock-Paper-Scissors?";
-document.body.appendChild(question);
+document.body.appendChild(question);    // make title h1 visible on the webpage (not created in HTML all JS)
+
+let buttonYes = document.createElement("button")
+buttonYes.innerText = "Yes";
+document.body.appendChild(buttonYes);
+
+let buttonNo = document.createElement("button")
+buttonNo.innerText = "No";
+document.body.appendChild(buttonNo);
 
 //let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
 //console.log(confirmChoice);
@@ -338,6 +346,6 @@ while (confirmChoice) {
     alert(`The result is ${result} - You played ${countGames} time(s) - W:${countWins}|D:${countDraws}|L:${countLosses}`);
     confirmChoice = confirm("Do you want to keep playing play?");
     console.log(confirmChoice);
-} 
+}
 
 */
