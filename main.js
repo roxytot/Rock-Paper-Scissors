@@ -345,6 +345,8 @@ if (result === 0) {
 }
 console.log(result);
 
+
+
 question.innerText = "Do you want to keep playing?";
 
 /*
