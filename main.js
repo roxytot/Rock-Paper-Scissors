@@ -194,6 +194,77 @@
 // }
 
 // TASK 6
+// function getWinner(player1, player2) {
+//     if (player1 === "rock") {
+//         if (player2 === "rock") {
+//             return 0;
+//         } else if (player2 === "paper") {
+//             return -1;
+//         } else {
+//             return 1;
+//         }
+//     } else if (player1 === "paper") {
+//         if (player2 === "rock") {
+//             return 1;
+//         } else if (player2 === "paper") {
+//             return 0;
+//         } else {
+//             return -1;
+//         }
+//     } else if (player1 === "scissors") {
+//         if (player2 === "rock") {
+//             return -1;
+//         } else if (player2 === "paper") {
+//             return 1;
+//         } else {
+//             return 0;
+//         }
+//     }
+// }
+
+// let moveComputer = ["scissors", "paper", "rock"]
+
+// function randomMoveComp() {
+//     let randNumber = Math.floor(Math.random() * 2); //selecting random integer number between 0 and 2
+//     console.log(`Computer chose ${randNumber} from our array`); //printing random number to console
+//     console.log(moveComputer[randNumber]); // print random answer (string)
+//     return moveComputer[randNumber]; // return random answer
+// }
+
+// let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
+// console.log(confirmChoice);
+// // This allow player to keep playing if answer is ok
+
+// let countGames = 0;
+// let countWins = 0;
+// let countLosses = 0;
+// let countDraws = 0;
+// //let answerRanComp;
+// // console logs for testing
+
+// while (confirmChoice) {
+//     let answerPlayer1 = prompt("Enter your move");
+//     let answerRandComp = randomMoveComp();
+//     console.log(`Comp answer is ${answerRandComp}`);
+//     let result = getWinner(answerPlayer1, answerRandComp);
+//     console.log(result);
+//     countGames++;
+//     console.log(countGames);
+//     if (result === 0) {
+//         countDraws++;
+//     } else if (result === 1) {
+//         countWins++;
+//     } else if (result === -1) {
+//         countLosses++;
+//     }
+//     console.log(`draws ${countDraws}, wins ${countWins}, losses ${countLosses}`);
+//     alert(`The result is ${result} - You played ${countGames} time(s) - W:${countWins}|D:${countDraws}|L:${countLosses}`);
+//     confirmChoice = confirm("Do you want to keep playing play?");
+//     console.log(confirmChoice);
+// } 
+
+
+// TASK 7  - Refactor to HTML
 function getWinner(player1, player2) {
     if (player1 === "rock") {
         if (player2 === "rock") {
@@ -262,14 +333,4 @@ while (confirmChoice) {
     confirmChoice = confirm("Do you want to keep playing play?");
     console.log(confirmChoice);
 } 
-
-
-
-// if (result === 0) {
-//     countDraws++
-// } else if (result === 1) {
-//     countWins++
-// } else if (reslt === -1) {
-//     countLosses++
-// }
 
