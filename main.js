@@ -99,6 +99,7 @@
 // let result = getWinner(answer, "rock");
 // alert(`The result is ${result}`);
 
+
 // TASK 4
 function getWinner(player1, player2) {
     if (player1 === "rock") {
