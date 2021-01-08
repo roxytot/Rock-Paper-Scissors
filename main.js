@@ -145,6 +145,55 @@
 
 
 // TASK 5
+// function getWinner(player1, player2) {
+//     if (player1 === "rock") {
+//         if (player2 === "rock") {
+//             return 0;
+//         } else if (player2 === "paper") {
+//             return -1;
+//         } else {
+//             return 1;
+//         }
+//     } else if (player1 === "paper") {
+//         if (player2 === "rock") {
+//             return 1;
+//         } else if (player2 === "paper") {
+//             return 0;
+//         } else {
+//             return -1;
+//         }
+//     } else if (player1 === "scissors") {
+//         if (player2 === "rock") {
+//             return -1;
+//         } else if (player2 === "paper") {
+//             return 1;
+//         } else {
+//             return 0;
+//         }
+//     }
+// }
+
+// let moveComputer = ["scissors", "paper", "rock"]
+
+// function randomMoveComp() {
+//     let randNumber = Math.floor(Math.random() * 2); //selecting random integer number between 0 and 2
+//     console.log(`Computer chose ${randNumber} from our array`); //printing random number to console
+//     console.log(moveComputer[randNumber]); // print random answer (string)
+//     return moveComputer[randNumber]; // return random answer
+// }
+
+// let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
+
+// // This allow player to keep playing if answer is ok
+// while (confirmChoice) {
+//     let answerPlayer1 = prompt("Enter your move");
+//     let answerRandComp = randomMoveComp();
+//     let result = getWinner(answerPlayer1, answerRandComp);
+//     alert(`The result is ${result}`);
+//     let confirmChoice = confirm("Do you want to keep playing play?");
+// }
+
+// TASK 6
 function getWinner(player1, player2) {
     if (player1 === "rock") {
         if (player2 === "rock") {
@@ -185,11 +234,17 @@ function randomMoveComp() {
 let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
 
 // This allow player to keep playing if answer is ok
+
+countGames = 0
+
 while (confirmChoice) {
     let answerPlayer1 = prompt("Enter your move");
     let answerRandComp = randomMoveComp();
     let result = getWinner(answerPlayer1, answerRandComp);
-    alert(`The result is ${result}`);
+    console.log(countGames++)
+    alert(`The result is ${result} - You played ${countGames}`);
     let confirmChoice = confirm("Do you want to keep playing play?");
+    
 }
+
 
