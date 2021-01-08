@@ -331,7 +331,9 @@ document.body.appendChild(answerPlayer1);
 
 function keepScoreGame(event) {
     let answerRandComp = randomMoveComp();
-    let result = getWinner(answerPlayer1, answerRandComp);
+    console.log(`answer ${answerRandComp}`);
+    let result = getWinner(answerPlayer1.value, answerRandComp);
+    console.log(`answer1 ${answerPlayer1.value}`);
     if (result === 0) {
         countDraws++;
     } else if (result === 1) {
@@ -342,12 +344,11 @@ function keepScoreGame(event) {
     console.log(result);
 }
 
-document.addEventListener("change", keepScoreGame); // calling function to create random number
-
 let scoreBoard = document.createElement("h4");
 scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
 document.body.appendChild(scoreBoard);
 
+document.addEventListener("change", keepScoreGame); // calling function to create random number
 
 
 question.innerText = "Do you want to keep playing?";
