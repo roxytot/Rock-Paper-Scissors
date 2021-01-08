@@ -131,12 +131,10 @@ function getWinner(player1, player2) {
 let moveComputer = ["scissors", "paper", "rock"]
 
 function randomMoveComp() {
-    Math.random
-
+    return Math.floor(Math.random(0, 2));
 }
 
-
 let answerPlayer1 = prompt("Enter your move");
-let answerRandComp = FUNCTION
+let answerRandComp = randomMoveComp;
 let result = getWinner(answerPlayer1, "rock");
 alert(`The result is ${result}`);
