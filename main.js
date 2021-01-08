@@ -184,6 +184,7 @@ function randomMoveComp() {
 
 let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
 
+// This allow player to keep playing if answer is ok
 while (confirmChoice) {
     let answerPlayer1 = prompt("Enter your move");
     let answerRandComp = randomMoveComp();
@@ -191,3 +192,4 @@ while (confirmChoice) {
     alert(`The result is ${result}`);
     let confirmChoice = confirm("Do you want to keep playing play?");
 }
+
