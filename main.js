@@ -328,22 +328,25 @@ document.body.appendChild(question2);
 let answerPlayer1 = document.createElement("input"); // create input textbox
 document.body.appendChild(answerPlayer1);
 
-document.addEventListener("change", randomMoveComp); // calling function to create random number
+
+function keepScoreGame(event) {
+    let answerRandComp = randomMoveComp();
+    let result = getWinner(answerPlayer1, answerRandComp);
+    if (result === 0) {
+        countDraws++;
+    } else if (result === 1) {
+        countWins++;
+    } else if (result === -1) {
+        countLosses++;
+    }
+    console.log(result);
+}
+
+document.addEventListener("change", keepScoreGame); // calling function to create random number
 
 let scoreBoard = document.createElement("h4");
 scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
 document.body.appendChild(scoreBoard);
-
-let answerRandComp = randomMoveComp();
-let result = getWinner(answerPlayer1, answerRandComp);
-if (result === 0) {
-    countDraws++;
-} else if (result === 1) {
-    countWins++;
-} else if (result === -1) {
-    countLosses++;
-}
-console.log(result);
 
 
 
