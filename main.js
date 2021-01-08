@@ -182,11 +182,12 @@ function randomMoveComp() {
     return moveComputer[randNumber]; // return random answer
 }
 
-let answerPlayer1 = prompt("Enter your move");
-let answerRandComp = randomMoveComp();
-let result = getWinner(answerPlayer1, answerRandComp);
-alert(`The result is ${result}`);
+let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
 
-let confirmChoice = confirm("Do you want to keep playing play?")
-
-while (confirm)
+while (confirmChoice) {
+    let answerPlayer1 = prompt("Enter your move");
+    let answerRandComp = randomMoveComp();
+    let result = getWinner(answerPlayer1, answerRandComp);
+    alert(`The result is ${result}`);
+    let confirmChoice = confirm("Do you want to keep playing play?");
+}
