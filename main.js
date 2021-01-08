@@ -236,15 +236,33 @@ let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
 // This allow player to keep playing if answer is ok
 
 countGames = 0
+countWins = 0
+countLosses = 0
+countDraws = 0
 
 while (confirmChoice) {
     let answerPlayer1 = prompt("Enter your move");
     let answerRandComp = randomMoveComp();
     let result = getWinner(answerPlayer1, answerRandComp);
-    console.log(countGames++)
-    alert(`The result is ${result} - You played ${countGames}`);
+    countGames++
+    if (result === 0) {
+        countDraws++
+    } else if (result === 1) {
+        countWins++
+    } else if (result === -1) {
+        countLosses++
+    }
+    alert(`The result is ${result} - You played ${countGames} time(s) - W:${countWins}|D:${countDraws}|L:${countLosses}`);
     let confirmChoice = confirm("Do you want to keep playing play?");
-    
 }
 
+
+
+// if (result === 0) {
+//     countDraws++
+// } else if (result === 1) {
+//     countWins++
+// } else if (reslt === -1) {
+//     countLosses++
+// }
 
