@@ -302,10 +302,16 @@ function randomMoveComp() {
     return moveComputer[randNumber]; // return random answer
 }
 
-let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
-console.log(confirmChoice);
+let question = document.createElement("h1");
+question.innerText = "Do you want to play Rock-Paper-Scissors?";
+document.body.appendChild(question);
+
+//let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
+//console.log(confirmChoice);
+
 // This allow player to keep playing if answer is ok
 
+/*
 let countGames = 0;
 let countWins = 0;
 let countLosses = 0;
@@ -334,3 +340,4 @@ while (confirmChoice) {
     console.log(confirmChoice);
 } 
 
+*/
