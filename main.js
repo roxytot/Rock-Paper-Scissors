@@ -131,12 +131,13 @@ function getWinner(player1, player2) {
 let moveComputer = ["scissors", "paper", "rock"]
 
 function randomMoveComp() {
-    let randNumber = Math.floor(Math.random() * 2)
-    return randNumber;
-    console.log
+    let randNumber = Math.floor(Math.random() * 2); //selecting random integer number between 0 and 2
+    console.log(`Computer chose ${randNumber} from our array`); //printing random number to console
+    console.log(moveComputer[randNumber]); // print random answer (string)
+    return moveComputer[randNumber]; // return random answer
 }
 
 let answerPlayer1 = prompt("Enter your move");
-let answerRandComp = randomMoveComp;
+let answerRandComp = randomMoveComp();
 let result = getWinner(answerPlayer1, answerRandComp);
 alert(`The result is ${result}`);
