@@ -1,370 +1,147 @@
-//console.log("this is a test");
+let countGames = 0;
+let count = {
+	win: 0,
+	lose: 0,
+	draw: 0,
+};
+let userChoice;
+let compChoice;
+let playerName = "";
+let moveComputer = ["rock", "paper", "scissors"];
+let result = {
+	win: "YOU WIN",
+	lose: "YOU LOSE",
+	draw: "IT'S a DRAW",
+};
+let startBtn = document.getElementById("username");
+let rockButton = document.querySelector("#rock");
+let paperButton = document.querySelector("#paper");
+let scissorsButton = document.querySelector("#scissors");
+let gameResult = document.querySelector("#result");
+const list = document.querySelectorAll("li");
 
-// TASK 1 
-// let playerMove = "paper";
-// let computerMove = "scissors";
-// if (playerMove === "rock") {
-//     if (computerMove === "rock") {
-//         console.log('draw');
-//     } else if (computerMove === "paper") {
-//         console.log("lose");
-//     } else {
-//         console.log("win");
-//     }
-// } else if (playerMove === "paper") {
-//     if (computerMove === "rock") {
-//         console.log('win');
-//     } else if (computerMove === "paper") {
-//         console.log("draw");
-//     } else {
-//         console.log("lose");
-//     }
-// } else if (playerMove === "scissors") {
-//     if (computerMove === "rock") {
-//         console.log('lose');
-//     } else if (computerMove === "paper") {
-//         console.log("win");
-//     } else {
-//         console.log("draw");
-//     }
-// }
+startBtn.addEventListener("keydown", function (event) {
+	if (event.code === "Enter") {
+		event.preventDefault();
+		document.getElementById("start").click();
+	}
+});
 
-// TASK 2 - Function
+rockButton.addEventListener("click", () => {
+	userChoice = "rock";
+	compChoice = randomMoveComp();
+	keepScoreGame();
+});
 
-// //results: 0 is draw, 1 is win, -1 is lose
-// // player 1 is playerMove, player2 is computerMove
-// function getWinner(player1, player2) {
-//     if (player1 === "rock") {
-//         if (player2 === "rock") {
-//             return 0;
-//         } else if (player2 === "paper") {
-//             return -1;
-//         } else {
-//             return 1;
-//         }
-//     } else if (player1 === "paper") {
-//         if (player2 === "rock") {
-//             return 1;
-//         } else if (player2 === "paper") {
-//             return 0;
-//         } else {
-//             return -1;
-//         }
-//     } else if (player1 === "scissors") {
-//         if (player2 === "rock") {
-//             return -1;
-//         } else if (player2 === "paper") {
-//             return 1;
-//         } else {
-//             return 0;
-//         }
-//     }
-// }
+paperButton.addEventListener("click", () => {
+	userChoice = "paper";
+	compChoice = randomMoveComp();
+	keepScoreGame();
+});
 
-// let result = getWinner("rock", "rock");
-// console.log(`The result is ${result}`);
+scissorsButton.addEventListener("click", () => {
+	userChoice = "scissors";
+	compChoice = randomMoveComp();
+	keepScoreGame();
+});
 
-// TASK 3
-//results: 0 is draw, 1 is win, -1 is lose
-// player 1 is playerMove, player2 is computerMove
-// function getWinner(player1, player2) {
-//     if (player1 === "rock") {
-//         if (player2 === "rock") {
-//             return 0;
-//         } else if (player2 === "paper") {
-//             return -1;
-//         } else {
-//             return 1;
-//         }
-//     } else if (player1 === "paper") {
-//         if (player2 === "rock") {
-//             return 1;
-//         } else if (player2 === "paper") {
-//             return 0;
-//         } else {
-//             return -1;
-//         }
-//     } else if (player1 === "scissors") {
-//         if (player2 === "rock") {
-//             return -1;
-//         } else if (player2 === "paper") {
-//             return 1;
-//         } else {
-//             return 0;
-//         }
-//     }
-// }
-
-// let answer = prompt("Enter your move");
-// let result = getWinner(answer, "rock");
-// alert(`The result is ${result}`);
-
-
-// TASK 4
-// function getWinner(player1, player2) {
-//     if (player1 === "rock") {
-//         if (player2 === "rock") {
-//             return 0;
-//         } else if (player2 === "paper") {
-//             return -1;
-//         } else {
-//             return 1;
-//         }
-//     } else if (player1 === "paper") {
-//         if (player2 === "rock") {
-//             return 1;
-//         } else if (player2 === "paper") {
-//             return 0;
-//         } else {
-//             return -1;
-//         }
-//     } else if (player1 === "scissors") {
-//         if (player2 === "rock") {
-//             return -1;
-//         } else if (player2 === "paper") {
-//             return 1;
-//         } else {
-//             return 0;
-//         }
-//     }
-// }
-
-// let moveComputer = ["scissors", "paper", "rock"]
-
-// function randomMoveComp() {
-//     let randNumber = Math.floor(Math.random() * 2); //selecting random integer number between 0 and 2
-//     console.log(`Computer chose ${randNumber} from our array`); //printing random number to console
-//     console.log(moveComputer[randNumber]); // print random answer (string)
-//     return moveComputer[randNumber]; // return random answer
-// }
-
-// let answerPlayer1 = prompt("Enter your move");
-// let answerRandComp = randomMoveComp();
-// let result = getWinner(answerPlayer1, answerRandComp);
-// alert(`The result is ${result}`);
-
-
-// TASK 5
-// function getWinner(player1, player2) {
-//     if (player1 === "rock") {
-//         if (player2 === "rock") {
-//             return 0;
-//         } else if (player2 === "paper") {
-//             return -1;
-//         } else {
-//             return 1;
-//         }
-//     } else if (player1 === "paper") {
-//         if (player2 === "rock") {
-//             return 1;
-//         } else if (player2 === "paper") {
-//             return 0;
-//         } else {
-//             return -1;
-//         }
-//     } else if (player1 === "scissors") {
-//         if (player2 === "rock") {
-//             return -1;
-//         } else if (player2 === "paper") {
-//             return 1;
-//         } else {
-//             return 0;
-//         }
-//     }
-// }
-
-// let moveComputer = ["scissors", "paper", "rock"]
-
-// function randomMoveComp() {
-//     let randNumber = Math.floor(Math.random() * 2); //selecting random integer number between 0 and 2
-//     console.log(`Computer chose ${randNumber} from our array`); //printing random number to console
-//     console.log(moveComputer[randNumber]); // print random answer (string)
-//     return moveComputer[randNumber]; // return random answer
-// }
-
-// let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
-
-// // This allow player to keep playing if answer is ok
-// while (confirmChoice) {
-//     let answerPlayer1 = prompt("Enter your move");
-//     let answerRandComp = randomMoveComp();
-//     let result = getWinner(answerPlayer1, answerRandComp);
-//     alert(`The result is ${result}`);
-//     let confirmChoice = confirm("Do you want to keep playing play?");
-// }
-
-// TASK 6
-// function getWinner(player1, player2) {
-//     if (player1 === "rock") {
-//         if (player2 === "rock") {
-//             return 0;
-//         } else if (player2 === "paper") {
-//             return -1;
-//         } else {
-//             return 1;
-//         }
-//     } else if (player1 === "paper") {
-//         if (player2 === "rock") {
-//             return 1;
-//         } else if (player2 === "paper") {
-//             return 0;
-//         } else {
-//             return -1;
-//         }
-//     } else if (player1 === "scissors") {
-//         if (player2 === "rock") {
-//             return -1;
-//         } else if (player2 === "paper") {
-//             return 1;
-//         } else {
-//             return 0;
-//         }
-//     }
-// }
-
-// let moveComputer = ["scissors", "paper", "rock"]
-
-// function randomMoveComp() {
-//     let randNumber = Math.floor(Math.random() * 2); //selecting random integer number between 0 and 2
-//     console.log(`Computer chose ${randNumber} from our array`); //printing random number to console
-//     console.log(moveComputer[randNumber]); // print random answer (string)
-//     return moveComputer[randNumber]; // return random answer
-// }
-
-// let confirmChoice = confirm("Do you want to play Rock-Paper-Scissors?");
-// console.log(confirmChoice);
-// // This allow player to keep playing if answer is ok
-
-// let countGames = 0;
-// let countWins = 0;
-// let countLosses = 0;
-// let countDraws = 0;
-// //let answerRanComp;
-// // console logs for testing
-
-// while (confirmChoice) {
-//     let answerPlayer1 = prompt("Enter your move");
-//     let answerRandComp = randomMoveComp();
-//     console.log(`Comp answer is ${answerRandComp}`);
-//     let result = getWinner(answerPlayer1, answerRandComp);
-//     console.log(result);
-//     countGames++;
-//     console.log(countGames);
-//     if (result === 0) {
-//         countDraws++;
-//     } else if (result === 1) {
-//         countWins++;
-//     } else if (result === -1) {
-//         countLosses++;
-//     }
-//     console.log(`draws ${countDraws}, wins ${countWins}, losses ${countLosses}`);
-//     alert(`The result is ${result} - You played ${countGames} time(s) - W:${countWins}|D:${countDraws}|L:${countLosses}`);
-//     confirmChoice = confirm("Do you want to keep playing play?");
-//     console.log(confirmChoice);
-// } 
-
-
-// TASK 7  - Refactor to HTML
-function getWinner(player1, player2) {
-    if (player1 === "rock") {
-        if (player2 === "rock") {
-            return 0;
-        } else if (player2 === "paper") {
-            return -1;
-        } else {
-            return 1;
-        }
-    } else if (player1 === "paper") {
-        if (player2 === "rock") {
-            return 1;
-        } else if (player2 === "paper") {
-            return 0;
-        } else {
-            return -1;
-        }
-    } else if (player1 === "scissors") {
-        if (player2 === "rock") {
-            return -1;
-        } else if (player2 === "paper") {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+function startGame() {
+	document.getElementsByClassName("name")[0].style.display = "block";
+	playerName = startBtn.value;
+	document.getElementById("usr").innerHTML = "Hi, " + playerName + "!";
+	document.getElementById("score").innerHTML =
+		"Games won: " + count.win + " out of " + countGames;
+	document.getElementsByClassName("welcome")[0].style.display = "none";
+	document.getElementsByClassName("content")[0].style.display = "block";
 }
 
-let moveComputer = ["scissors", "paper", "rock"]
+// compText = document.querySelector(".computer");
+// countText = document.querySelector(".count");
+
+// compText.innerText += ` ${compChoice}`;
+// countText.innerText += ` ${countGames}`;
 
 function randomMoveComp() {
-    let randNumber = Math.floor(Math.random() * 2); //selecting random integer number between 0 and 2
-    console.log(`Computer chose ${randNumber} from our array`); //printing random number to console
-    console.log(moveComputer[randNumber]); // print random answer (string)
-    return moveComputer[randNumber]; // return random answer
+	let randNumber = Math.floor(Math.random() * 3);
+	console.log(`Computer chose ${randNumber}, i.e. ${moveComputer[randNumber]}`);
+	return moveComputer[randNumber];
 }
 
-let question = document.createElement("h3");
-question.innerText = "Do you want to play Rock-Paper-Scissors?";
-document.body.appendChild(question);    // make title h1 visible on the webpage (not created in HTML all JS)
-
-let buttonYes = document.createElement("button")
-buttonYes.innerText = "Yes";
-document.body.appendChild(buttonYes);
-
-let buttonNo = document.createElement("button")
-buttonNo.innerText = "No";
-document.body.appendChild(buttonNo);
-
-// This allow player to keep playing if answer is ok
-
-let countGames = 0;
-let countWins = 0;
-let countLosses = 0;
-let countDraws = 0;
-
-let question2 = document.createElement("h3");
-question2.innerText = "Input your move below, then press enter:";
-document.body.appendChild(question2);
-
-let answerPlayer1 = document.createElement("input"); // create input textbox
-document.body.appendChild(answerPlayer1);
-
-
-let scoreBoard = document.createElement("h4"); // create new h4 element 
-scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
-document.body.appendChild(scoreBoard); //h4 visible in DOM
-
-function keepScoreGame(event) {
-    let answerRandComp = randomMoveComp();
-    console.log(`answer ${answerRandComp}`);
-    let result = getWinner(answerPlayer1.value, answerRandComp);
-    console.log(`answer1 ${answerPlayer1.value}`);
-    if (result === 0) {
-        countDraws++;
-    } else if (result === 1) {
-        countWins++;
-    } else if (result === -1) {
-        countLosses++;
-    }
-    console.log(result);
-    scoreBoard.innerText = `You have played ${countGames} times - draws ${countDraws}, wins ${countWins}, losses ${countLosses}`;
+function keepScoreGame() {
+	console.log(userChoice);
+	let result = getWinner(userChoice, compChoice);
+	console.log(`answer1 ${userChoice}`);
+	countGames++;
+	console.log(count.win);
+	console.log(count.lose);
+	console.log(count.draw);
+	if (result === 0) {
+		count.draw += 1;
+		list[2].innerText = count.draw;
+		document.getElementById("score").innerHTML =
+			"Games won: " + count.win + " out of " + countGames;
+	} else if (result === 1) {
+		count.win += 1;
+		list[0].innerText = count.win;
+		document.getElementById("score").innerHTML =
+			"Games won: " + count.win + " out of " + countGames;
+	} else if (result === -1) {
+		count.lose += 1;
+		list[1].innerText = count.lose;
+		document.getElementById("score").innerHTML =
+			"Games won: " + count.win + " out of " + countGames;
+	}
+	console.log(result);
 }
 
-
-
-document.addEventListener("change", keepScoreGame); // calling function to create random number
-
-
-question.innerText = "Do you want to keep playing?";
-
-/*
-while (confirmChoice) {
-
-
-    countGames++;
-    console.log(countGames);
-
-    confirmChoice = confirm("Do you want to keep playing play?");
-    console.log(confirmChoice);
+function getWinner(player1, player2) {
+	if (player1 === "rock") {
+		if (player2 === "rock") {
+			return 0;
+		} else if (player2 === "paper") {
+			return -1;
+		} else {
+			return 1;
+		}
+	} else if (player1 === "paper") {
+		if (player2 === "rock") {
+			return 1;
+		} else if (player2 === "paper") {
+			return 0;
+		} else {
+			return -1;
+		}
+	} else if (player1 === "scissors") {
+		if (player2 === "rock") {
+			return -1;
+		} else if (player2 === "paper") {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
 
-*/
+// let letters = /^[A-Za-z]+$/;
+// let valid = false;
+
+// function isUpperCaseAt(text, position) {
+// 	return true;
+// }
+
+// let scoreBoard = document.createElement("h4");
+// scoreBoard.innerText = `You have played ${countGames} times - draws ${count[2][1]}, wins ${count[0][1]}, losses ${count[1][1]}`;
+// document.body.appendChild(scoreBoard);
+
+// let userName = document.querySelector("#username");
+// console.log(userName.value);
+// userName.addEventListener("input", () => {
+// 	let usrName = userName.innerText;
+// 	if (
+// 		usrName.length <= 10 &&
+// 		isUpperCaseAt(usrName, 0) &&
+// 		usrName.charAt(0).match(letters)
+// 	) {
+// 		valid = true;
+// 	}
+// });

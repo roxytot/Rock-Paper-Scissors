@@ -1,17 +1,56 @@
 <!DOCTYPE html>
-<html lang="en-GB">
-
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <title>Rock, Paper, Scissors</title>
-</head>
-
-<body>
-    <h1> Best eVEr Rock/Paper/Scissors gAMe </h1>
-
-
-    <script src="main.js">  </script>
-
-</body>
-
+<html>
+	<head>
+		<title>RPS Game</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<header>
+			<div class="name">
+				<p id="usr"></p>
+				<p id="score"></p>
+			</div>
+		</header>
+		<div class="container">
+			<h1>Rock Paper Scissors</h1>
+			<img src="RPS.png" alt="Rock Paper Scissors Image" />
+			<form class="welcome">
+				<label for="username">Please enter your username:</label><br />
+				<div class="user">
+					<input
+						type="text"
+						id="username"
+						name="username"
+						title="Must start with a capital letter, and contain no more than 10 characters"
+						required
+					/>
+					<input
+						class="btn"
+						id="start"
+						type="button"
+						value="Start"
+						onclick="startGame()"
+					/>
+				</div>
+			</form>
+			<div class="content">
+				<h2>Choose your move</h2>
+				<div class="buttons">
+					<button class="btn" id="rock">Rock</button>
+					<button class="btn" id="paper">Paper</button>
+					<button class="btn" id="scissors">Scissors</button>
+				</div>
+				<p class="computer">Computer choice:</p>
+				<p id="result"></p>
+				<!-- <p class="count">Games played:</p>
+				<ul>
+					<li>You won:</li>
+					<li>You lost:</li>
+					<li>Draws:</li>
+				</ul> -->
+				<button class="btn">Reset</button>
+			</div>
+		</div>
+		<script src="main.js"></script>
+	</body>
 </html>
