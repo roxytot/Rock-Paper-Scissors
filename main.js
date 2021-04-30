@@ -1,35 +1,20 @@
-let countGames = 0;
 let count = {
 	win: 0,
 	lose: 0,
 	draw: 0,
 };
+let countGames = 0;
 let userChoice;
-// let compChoice;
 let playerName = "";
+let letters = /^[A-Za-z]+$/;
+let valid = false;
 let moveComputer = ["rock", "paper", "scissors"];
-let result = {
-	win: "YOU WIN",
-	lose: "YOU LOSE",
-	draw: "IT'S a DRAW",
-};
 let userName = document.querySelector("#username");
 let rockButton = document.querySelector("#rock");
 let paperButton = document.querySelector("#paper");
 let scissorsButton = document.querySelector("#scissors");
 let computer = document.querySelector("#choice");
 let resultText = document.querySelector("#result");
-let letters = /^[A-Za-z]+$/;
-let valid = false;
-
-function isUpperCaseAt(text) {
-	if (text[0] === text[0].toUpperCase()) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
 
 userName.addEventListener("input", () => {
 	let usrName = userName.value;
@@ -51,7 +36,7 @@ userName.addEventListener("keydown", function (event) {
 			document.getElementById("start").click();
 		} else
 			alert(
-				"Username must start with a capital and have maximum 10 characters!"
+				"Username must start with a capital letter and contain no more than 10 characters!"
 			);
 	}
 });
@@ -75,18 +60,19 @@ scissorsButton.addEventListener("click", () => {
 });
 
 function startGame() {
-	document.getElementsByClassName("name")[0].style.display = "block";
+	document.getElementsByClassName("user-details")[0].style.display = "flex";
 	playerName = userName.value;
 	document.getElementById("usr").innerHTML = "Hi, " + playerName + "!";
 	document.getElementById("score").innerHTML =
 		"Games won: " + count.win + " out of " + countGames;
 	document.getElementsByClassName("welcome")[0].style.display = "none";
-	document.getElementsByClassName("content")[0].style.display = "block";
+	document.getElementsByClassName("content")[0].style.display = "flex";
 }
 
 function randomMoveComp() {
 	let randNumber = Math.floor(Math.random() * 3);
-	computer.innerText = ` ${moveComputer[randNumber]}`
+	computer.innerText = ` ${moveComputer[randNumber]}`;
+	document.getElementById("choice").style.color = "#fba746";
 	return moveComputer[randNumber];
 }
 
@@ -95,21 +81,20 @@ function keepScoreGame() {
 	countGames++;
 	if (result === 0) {
 		count.draw = count.draw + 1;
-		resultText.innerText = "It's a draw. Try again";
+		resultText.innerText = "It's a draw.";
 		document.getElementById("score").innerHTML =
-		"Games won: " + count.win + " out of " + countGames;
+			"Games won: " + count.win + " out of " + countGames;
 	} else if (result === 1) {
 		count.win = count.win + 1;
 		resultText.innerText = "You won! :)";
 		document.getElementById("score").innerHTML =
-		"Games won: " + count.win + " out of " + countGames;
+			"Games won: " + count.win + " out of " + countGames;
 	} else if (result === -1) {
 		count.lose = count.lose + 1;
-		resultText.innerText = "You lost :( ";
+		resultText.innerText = "You lost :(. Try again! ";
 		document.getElementById("score").innerHTML =
 			"Games won: " + count.win + " out of " + countGames;
 	}
-	console.log(result);
 }
 
 function getWinner(player1, player2) {
@@ -140,6 +125,24 @@ function getWinner(player1, player2) {
 	}
 }
 
-// let scoreBoard = document.createElement("h4");
-// scoreBoard.innerText = `You have played ${countGames} times - draws ${count[2][1]}, wins ${count[0][1]}, losses ${count[1][1]}`;
-// document.body.appendChild(scoreBoard);
+function isUpperCaseAt(text) {
+	if (text[0] === text[0].toUpperCase()) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function resetGame() {
+	count = {
+		win: 0,
+		lose: 0,
+		draw: 0,
+	};
+	countGames= 0;
+	userName.value = "";
+	computer.innerText = "";
+	document.getElementsByClassName("user-details")[0].style.display = "none";
+	document.getElementsByClassName("welcome")[0].style.display = "block";
+	document.getElementsByClassName("content")[0].style.display = "none";
+}

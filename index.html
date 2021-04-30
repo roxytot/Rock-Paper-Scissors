@@ -5,15 +5,12 @@
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
-		<header>
-			<div class="name">
-				<p id="usr"></p>
-				<p id="score"></p>
-			</div>
-		</header>
 		<div class="container">
 			<h1>Rock Paper Scissors</h1>
 			<img src="RPS.png" alt="Rock Paper Scissors Image" />
+			<div class="user-details">
+				<p id="usr"></p>
+			</div>
 			<form class="welcome">
 				<label for="username">Please enter your username:</label><br />
 				<div class="user">
@@ -21,7 +18,7 @@
 						type="text"
 						id="username"
 						name="username"
-						title="Must start with a capital letter, and contain no more than 10 characters"
+						title="Username must start with a capital letter and contain no more than 10 characters"
 						required
 					/>
 					<input
@@ -34,15 +31,16 @@
 				</div>
 			</form>
 			<div class="content">
-				<h2>Choose your move</h2>
+				<h2>Choose your move:</h2>
 				<div class="buttons">
 					<button class="btn" id="rock">Rock</button>
 					<button class="btn" id="paper">Paper</button>
 					<button class="btn" id="scissors">Scissors</button>
 				</div>
-				<p class="computer">Computer's choice: <span id="choice"></span></p>
+				<h2 class="computer">Computer's choice: <span id="choice"></span></h2>
 				<p id="result"></p>
-				<button class="btn">Reset</button>
+				<p id="score"></p>
+				<button class="btn" onclick="resetGame()">Reset</button>
 			</div>
 		</div>
 		<script src="main.js"></script>
