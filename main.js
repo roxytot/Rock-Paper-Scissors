@@ -5,7 +5,7 @@ let count = {
 	draw: 0,
 };
 let userChoice;
-let compChoice;
+// let compChoice;
 let playerName = "";
 let moveComputer = ["rock", "paper", "scissors"];
 let result = {
@@ -13,17 +13,46 @@ let result = {
 	lose: "YOU LOSE",
 	draw: "IT'S a DRAW",
 };
-let startBtn = document.getElementById("username");
+let userName = document.querySelector("#username");
 let rockButton = document.querySelector("#rock");
 let paperButton = document.querySelector("#paper");
 let scissorsButton = document.querySelector("#scissors");
-let gameResult = document.querySelector("#result");
-const list = document.querySelectorAll("li");
+let computer = document.querySelector("#choice");
+let resultText = document.querySelector("#result");
+let letters = /^[A-Za-z]+$/;
+let valid = false;
 
-startBtn.addEventListener("keydown", function (event) {
+function isUpperCaseAt(text) {
+	if (text[0] === text[0].toUpperCase()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+userName.addEventListener("input", () => {
+	let usrName = userName.value;
+	if (
+		usrName.length <= 10 &&
+		isUpperCaseAt(usrName) &&
+		usrName.charAt(0).match(letters)
+	) {
+		valid = true;
+	} else {
+		valid = false;
+	}
+});
+
+userName.addEventListener("keydown", function (event) {
 	if (event.code === "Enter") {
 		event.preventDefault();
-		document.getElementById("start").click();
+		if (valid) {
+			document.getElementById("start").click();
+		} else
+			alert(
+				"Username must start with a capital and have maximum 10 characters!"
+			);
 	}
 });
 
@@ -47,7 +76,7 @@ scissorsButton.addEventListener("click", () => {
 
 function startGame() {
 	document.getElementsByClassName("name")[0].style.display = "block";
-	playerName = startBtn.value;
+	playerName = userName.value;
 	document.getElementById("usr").innerHTML = "Hi, " + playerName + "!";
 	document.getElementById("score").innerHTML =
 		"Games won: " + count.win + " out of " + countGames;
@@ -55,39 +84,28 @@ function startGame() {
 	document.getElementsByClassName("content")[0].style.display = "block";
 }
 
-// compText = document.querySelector(".computer");
-// countText = document.querySelector(".count");
-
-// compText.innerText += ` ${compChoice}`;
-// countText.innerText += ` ${countGames}`;
-
 function randomMoveComp() {
 	let randNumber = Math.floor(Math.random() * 3);
-	console.log(`Computer chose ${randNumber}, i.e. ${moveComputer[randNumber]}`);
+	computer.innerText = ` ${moveComputer[randNumber]}`
 	return moveComputer[randNumber];
 }
 
 function keepScoreGame() {
-	console.log(userChoice);
 	let result = getWinner(userChoice, compChoice);
-	console.log(`answer1 ${userChoice}`);
 	countGames++;
-	console.log(count.win);
-	console.log(count.lose);
-	console.log(count.draw);
 	if (result === 0) {
-		count.draw += 1;
-		list[2].innerText = count.draw;
+		count.draw = count.draw + 1;
+		resultText.innerText = "It's a draw. Try again";
 		document.getElementById("score").innerHTML =
-			"Games won: " + count.win + " out of " + countGames;
+		"Games won: " + count.win + " out of " + countGames;
 	} else if (result === 1) {
-		count.win += 1;
-		list[0].innerText = count.win;
+		count.win = count.win + 1;
+		resultText.innerText = "You won! :)";
 		document.getElementById("score").innerHTML =
-			"Games won: " + count.win + " out of " + countGames;
+		"Games won: " + count.win + " out of " + countGames;
 	} else if (result === -1) {
-		count.lose += 1;
-		list[1].innerText = count.lose;
+		count.lose = count.lose + 1;
+		resultText.innerText = "You lost :( ";
 		document.getElementById("score").innerHTML =
 			"Games won: " + count.win + " out of " + countGames;
 	}
@@ -122,26 +140,6 @@ function getWinner(player1, player2) {
 	}
 }
 
-// let letters = /^[A-Za-z]+$/;
-// let valid = false;
-
-// function isUpperCaseAt(text, position) {
-// 	return true;
-// }
-
 // let scoreBoard = document.createElement("h4");
 // scoreBoard.innerText = `You have played ${countGames} times - draws ${count[2][1]}, wins ${count[0][1]}, losses ${count[1][1]}`;
 // document.body.appendChild(scoreBoard);
-
-// let userName = document.querySelector("#username");
-// console.log(userName.value);
-// userName.addEventListener("input", () => {
-// 	let usrName = userName.innerText;
-// 	if (
-// 		usrName.length <= 10 &&
-// 		isUpperCaseAt(usrName, 0) &&
-// 		usrName.charAt(0).match(letters)
-// 	) {
-// 		valid = true;
-// 	}
-// });
